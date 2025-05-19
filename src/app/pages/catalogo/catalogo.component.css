@@ -1,0 +1,109 @@
+/* Contenedor principal */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  /* Columna de filtros */
+  .filters-column {
+    width: 30%;
+    background-color: rgba(51, 51, 51, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Roboto;
+    margin-left: 50px;
+  }
+  
+  .filters-column h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter {
+    margin-bottom: 15px;
+  }
+  
+  .filter label {
+    font-weight: bold;
+  }
+  
+  .filter input, .filter select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFBE2D;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #FF9B00;
+  }
+  
+  /* Columna de propiedades */
+  .properties-column {
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparent;
+    gap: 30px;
+    justify-content: center;
+ 
+  }
+  
+  /* Tarjetas de propiedades */
+  .property-card {
+    width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  .property-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .property-info {
+    padding: 15px;
+  }
+  
+  .property-info h3 {
+    font-size: 1.2rem;
+    color: #FFBE2D;
+  }
+  
+  .property-info p {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .view-more {
+    background-color: #FFBE2D;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .view-more:hover {
+    background-color: #FF9B00;
+  }
+  

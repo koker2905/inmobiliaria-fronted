@@ -1,0 +1,67 @@
+<div class="container">
+  <!-- Barra lateral de filtros -->
+  <div class="filters-column">
+
+    <!-- Filtro de tipo de propiedad -->
+    <div class="filter">
+      <label>Tipo de propiedad:</label>
+      <select [(ngModel)]="propertyType">
+        <option value="casa">Casa</option>
+        <option value="departamento">Departamento</option>
+        <option value="suite">Suite</option>
+        <option value="otro">Otro</option>
+      </select>
+    </div>
+
+
+    <!-- Filtro por ubicación -->
+    <div class="filter">
+      <label>Ciudad:</label>
+      <select [(ngModel)]="city" (change)="filterProperties()" (change)="onCityChange(city)">
+        <option value="Cuenca">Cuenca</option>
+        <option value="Azogues">Azogues</option>
+      </select>
+    </div>
+
+    <!-- Filtro por ubicación -->
+    <div class="filter">
+      <label>Sector:</label>
+      <select [(ngModel)]="sector" (change)="filterProperties()">
+        <option *ngFor="let sector of sectors" [value]="sector">{{ sector }}</option>
+      </select>
+    </div>
+
+    <!-- Filtro por precio -->
+    <div class="filter">
+      <label>Precio:</label>
+      <input type="number" [(ngModel)]="minPrice" (change)="filterProperties()" placeholder="Desde">
+      <input type="number" [(ngModel)]="maxPrice" (change)="filterProperties()" placeholder="Hasta">
+    </div>
+
+    <!-- Filtro por código -->
+    <!-- <div class="filter">
+      <label>Búsqueda por código:</label>
+      <input type="text" [(ngModel)]="searchCode" (keyup)="searchByCode()" placeholder="Buscar código">
+    </div> -->
+
+    <!-- Limpiar filtros -->
+    <button (click)="clearFilters()">Limpiar filtros</button>
+  </div>
+
+  <!-- Propiedades filtradas -->
+  <div class="properties-column">
+    <div *ngFor="let property of filteredProperties">
+      <div class="property-card">
+        <img [src]="property.url_img" alt="Imagen de propiedad" class="property-img">
+        <div class="property-info">
+          <h3>{{ property.TipoPropiedad }}</h3>
+          <h3>{{ property.url_img }}</h3>
+          <h3>{{ property.Precio_Venta }}</h3>
+          <p>{{ property.Direccion_Sector }}</p>
+        
+          <button class="view-more" (click)="viewMore(property)">Ver más</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

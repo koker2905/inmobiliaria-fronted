@@ -1,0 +1,658 @@
+.todo{
+  background: linear-gradient(to bottom, #000000, #141414);
+}
+
+.abajo{
+  background: linear-gradient(to uppercase, #000000, #141414);
+}
+
+/* Contenedor principal que dividirá el espacio en dos */
+.section-container {
+  display: flex;              /* Usamos Flexbox para distribuir los elementos */
+  justify-content: space-between; /* Espacio entre las dos divisiones */
+  align-items: center;        /* Centra el contenido verticalmente */
+  padding: 20px;
+  gap: 20px;                  /* Espacio entre las divisiones */
+  width: 100%;                /* Asegura que el contenedor ocupe todo el ancho disponible */
+
+  
+}
+
+/* Estilo para la división izquierda */
+.left-side {
+                    /* Ocupa el 50% del contenedor */
+  display: flex;
+  flex-direction: column;
+  text-align: center;         /* Centra el texto horizontalmente */
+  color: white;               /* Color de texto blanco */
+  padding: 20px;              /* Espaciado interno */
+  border-radius: 10px;        /* Bordes redondeados */
+  font-family: Roboto;
+  width: 50%; 
+  gap: 30px;
+}
+
+.left-side h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.left-side p {
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.btncatalogo {
+  background-color: #FFBE2D;
+  color: black;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Estilo para la división derecha */
+
+.hero-container {
+  
+  align-items: flex; 
+  justify-content: center;  
+  align-items: center; 
+  /* Fondo semi-transparente */
+  color: white;
+  border-radius: 15px;
+  font-family: Roboto;
+  width: 50%; 
+}
+
+.men-container {
+   
+  display: flex;              /* Usamos Flexbox dentro de este contenedor también */
+  justify-content: center;    /* Centra el contenido horizontalmente */
+  align-items: center; 
+  background-color: rgba(51, 51, 51, 0.3);
+  color: white;
+  padding: 50px;
+  border-radius: 15px;
+  font-family: Roboto;
+  width: 70%; 
+  margin-left: auto;           /* Centra el contenedor hijo a la izquierda */
+  margin-right: auto;          /* Centra el contenedor hijo a la derecha */
+
+}
+
+.filters {
+  align-items: left;
+  text-align: center;
+}
+
+.filters h1 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.filters h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-style: bold;
+}
+
+.filters p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #FFBE2D;
+  color: black;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px;
+  font-family: Roboto;
+  font-weight: 500;
+
+}
+
+.button:hover {
+  background-color: #FF9B00;
+}
+
+/* Filtros de búsqueda */
+.search-filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-family: Roboto;
+}
+
+select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+select:hover{
+
+ color:#000000;
+ 
+}
+
+
+
+/* Estilo del botón de búsqueda */
+.search-button {
+  background-color: #4C2DA0;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #382176;
+}
+
+/* Botón de búsqueda por código */
+.code-search-button {
+  background-color: transparent;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 2px solid white;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+
+.code-search-button:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+
+/* Seccion botones con imagenes */
+
+.arriba h1,
+.arriba p {
+  line-height: 1.8;
+}
+
+.arriba p{
+  font-size: 16px;
+}
+
+
+/* Seccion botones con imagenes */
+
+.imagen {
+  flex: 1;                       /* La sección de imagen ocupará el 50% del espacio */
+  display: flex;                 /* Usamos Flexbox también para centrar el contenido dentro de la imagen */
+  justify-content: center;       /* Centra el botón dentro de la imagen */
+  align-items: center;           /* Centra el contenido verticalmente */
+  gap: 40px;
+
+}
+
+.btnconimagen {
+  border: none;                        /* Sin borde alrededor del botón */
+  padding: 0;                           /* Eliminar cualquier relleno por defecto */
+  background-color: transparent;       /* Fondo transparente */
+  display: flex;                 /* Usamos Flexbox para alinear el texto dentro del botón */
+  flex-direction: column; 
+  align-items: center;         /* Centra el contenido horizontalmente */
+  justify-content: flex-end;   /* Mueve el texto hacia la parte inferior */
+  cursor: pointer;                    /* Puntero cuando pasas el ratón sobre el botón */
+  width: 200px;                           /* Ancho fijo para el contenedor */
+  height: 250px;                         /* Altura fija para el contenedor */
+  position: relative; 
+}
+
+.icono {
+  width: 100%;                   /* La imagen ocupará todo el ancho disponible */
+  height: 100%;                  /* La imagen ocupará toda la altura disponible */
+  object-fit: cover;             /* Asegura que la imagen cubra el área sin distorsionarse */
+  border-radius: 35px;           /* Redondea las esquinas de la imagen */
+  opacity: 0.65;                  /* Aplica una opacidad del 90% */              /* Aplica una opacidad del 50% */
+}
+
+.texto {
+  position: absolute;                  /* Posiciona el texto sobre la imagen */
+  text-align: center; 
+  font-family: Roboto, sans-serif;
+  font-size: 30px;
+  color: #fff;                         /* Color del texto */
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+
+
+
+/* FLECHA */
+.scroll-down, .scroll-up {
+  position: fixed;
+  left: 50%;  
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 2s ease;
+}
+
+.scroll-down{
+  bottom: 20px;
+}
+
+.scroll-up {
+  top: 20px; 
+}
+
+.flecha {
+  width: 100px;
+  height: auto;
+}
+
+
+
+.video {
+          /* Usamos Flexbox */
+ /* Distribuye los elementos (logo y botones) de manera que estén a los extremos */
+ justify-content: center; 
+ display: flex;    
+ align-items:  center;   /* Centra los elementos verticalmente */
+ padding: 100px 35px;     /* Agrega algo de espacio alrededor */
+ width: 1100px;
+ margin-left: auto;
+ margin-right: auto;
+
+}
+
+
+
+.dest{
+  display: flex;
+  gap:10px;
+  margin-left: 20px;
+  padding: 50px;
+}
+
+.dest p{
+  font-family: Roboto;
+  font-size: 25px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.dest i{
+  font-size: 25px;
+  padding: 5px;
+}
+
+
+/* Estilo para las tarjetas de propiedad */
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+  gap: 50px;
+  padding: 20px 200px;
+  padding-bottom: 80px;
+}
+
+.property-card {
+  background-color: #FFBE2D;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  font-family: Roboto;
+}
+
+.property-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+
+}
+
+.property-details {
+  padding: 5px;
+  text-align: center; 
+  min-height: 10px;
+  background-color: rgb(21, 20, 20);
+  text-transform: uppercase;
+}
+
+.property-detailss {
+  padding: 10px;
+  text-align: center;
+  background-color: rgb(30, 30, 30);
+  height: 150px;
+
+}
+
+.property-detailsss {
+  text-align: center;
+  height: 35px;
+  display: flex;
+  
+}
+
+.property-detailsss p{
+  color:black;
+  padding-top: 5px;
+  font-weight: 400;
+  margin-left: 15px;
+
+}
+
+.botones-mas{
+  margin-left: 50px;
+  gap:20px;
+  display: flex;
+  align-items: center;
+}
+
+.property-details h3 {
+  font-size: 17px;
+  color:rgb(255, 255, 255);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.property-details p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.property-detailss h2 {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.botones-mas i{
+  font-size: 25px;
+  color: #000000f0;
+}
+
+.iconoi{
+  padding: 15px;
+  gap:50px;
+  display: inline-flex;
+}
+
+.interno{
+  display: inline-flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Respuestas a pantallas pequeñas */
+@media (max-width: 768px) {
+
+  .scroll-down,
+  .scroll-up {
+    display: none;
+  }
+
+  
+  /*  Contenedor principal   */
+  .section-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0px;
+  }
+
+    /*  Lado izquierdo   */
+  .left-side, .hero-container {
+    width: 100%;
+  }
+
+  .left-side {
+    padding: 0px; 
+  }
+
+  .arriba p{
+    font-size: 14px;
+  }
+
+  .arriba h1{
+    font-size: 20px;
+  }
+
+  .btncatalogo {
+    font-size: 1rem;
+    padding: 8px 25px;
+  }
+
+  .imagen{
+    flex-direction: column;
+  }
+
+  .arriba{
+    padding: 0px 55px;
+  }
+
+  .left-side h1 {
+    font-weight: bold;
+  }
+  
+  .left-side p {
+    margin-top: 10px;
+  }
+
+
+
+
+  
+/* Filtros de búsqueda */
+
+.hero-container{
+  padding: 30px 0px;
+}
+.men-container {
+  width: 85%;
+  padding: 30px;
+}
+
+  .search-filters {
+    gap: 20px;
+    flex-direction: column;
+  }
+  
+  
+  /* Estilo del botón de búsqueda */
+  .button {
+    font-size: 0.8rem;
+    padding: 10px 15px;
+  }
+  
+  select {
+    padding: 10px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-button {
+    padding: 10px 85px;
+    font-size: 0.8rem;
+  }
+
+  .code-search-button {
+    
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    margin-top: 10px;
+  }
+  
+  /* Seccion botones con imagenes */
+ 
+  .btnconimagen {
+                    /* Puntero cuando pasas el ratón sobre el botón */
+    width: 250px;                           /* Ancho fijo para el contenedor */
+    height: 150px;                         /* Altura fija para el contenedor */
+    position: relative; 
+  }
+
+  /* Seccion video */
+
+  .video{
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+
+  /* Seccion dest */
+  .dest{
+    margin-left: 35px;
+    padding: 17px;
+  }
+
+  .dest p,i{
+    font-size: 15px;
+  }
+
+  .dest i{
+    padding: 0px;
+  }
+
+ /* Seccion casas*/
+
+
+    .property-card {
+      
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+  
+    }
+
+    .property-detailss {
+      min-height: 100px;
+      height: auto;
+    }
+
+    .iconoi{
+      padding: 5px;
+    }
+
+    
+    
+    
+  
+
+    .property-detailsss {
+      height: 40px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 5px;
+
+    }
+
+    .property-detailsss p{
+
+      display: none;
+      
+    }
+
+    .botones-mas{
+      
+     
+      gap:30px;
+
+    }
+
+    .botones-mas i{
+      
+      font-size: 22px; 
+      margin-left: auto;
+      margin-right: auto;
+      
+    }
+
+ 
+
+    .property-details h3 {
+      font-size: 14px;
+    }
+
+    .property-details p {
+      font-size: 0.7rem;
+    }
+
+    .property-detailss h2 {
+      font-size: 1.5rem;
+      color: #ffffff;
+    }
+
+    .video{
+      width: 100%;
+      height: auto;
+      padding: 0%;
+    }
+    
+  
+    .properties-column {
+      width: 100%;
+    }
+  
+    .property-grid {
+      grid-template-columns: 1fr;  /* Una sola columna en pantallas pequeñas */
+      padding: 10px 20px;
+      padding-bottom: 40px;
+    }
+  
+    .property-details p {
+      font-size: 1rem;
+      color: #333;
+    }
+  
+
+  }
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  

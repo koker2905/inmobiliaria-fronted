@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+/* Aplica fondo negro para toda la página */
+body {
+    background-color: black;
+    color: white;  /* Asegura que el texto sea visible sobre el fondo negro */
+  }

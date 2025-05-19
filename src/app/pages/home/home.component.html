@@ -1,1 +1,194 @@
-<p>home works!</p>
+<section class="todo">
+
+
+<section class="section-container">
+  <!-- División izquierda -->
+  <div class="left-side" >
+
+
+    <div class="arriba">
+    <h1>Inmobiliaria Fenix</h1>
+    <p>¡Encuentra la casa, departamento o suite de tus sueños!</p>
+
+    <button class="custom-button" class="btncatalogo" (click)="goToCatalogo()">Catalogo</button>
+    </div>
+
+    <div class="imagen">
+      <button class="btnconimagen">
+        <img src="assets/imagenes/arriendooo.jpeg" alt="icono" class="icono">
+        <span class="texto">Arriendos</span>
+      </button>
+    
+      <button class="btnconimagen">
+        <img src="assets/imagenes/venta.jpg" alt="icono" class="icono">
+        <span class="texto">Ventas</span>
+      </button>
+    
+      <button class="btnconimagen">
+        <img src="assets/imagenes/otro.png" alt="icono" class="icono">
+        <span class="texto">Otros</span>
+      </button>
+      </div>
+
+    
+  </div>
+
+
+  <div class="hero-container">
+    <!-- Filtros -->
+    
+    <div class="men-container">
+    <div class="filters">
+      <h1><strong>Encuentre su vivienda a un precio increíble</strong></h1>
+      <p>Compra, arriendo o venta de inmuebles en Cuenca o en cualquier ciudad del Ecuador.</p>
+  
+      <!-- Botones para seleccionar el tipo de propiedad -->
+      <div class="button-group">
+        <button class="button" (click)="filterProperties('venta')">En venta</button>
+        <button class="button" (click)="filterProperties('arrendar')">Arrendar</button>
+      </div>
+  
+      <!-- Filtros de búsqueda -->
+      <div class="search-filters">
+        <select [(ngModel)]="propertyType">
+          <option value="casa">Tipo de propiedad</option>
+          <option value="apartamento">Apartamento</option>
+          <option value="casa">Casa</option>
+          <option value="suite">Suite</option>
+        </select>
+        
+        <select [(ngModel)]="location">
+          
+          <option value="cuenca">Cuenca</option>
+          <option value="azogues">Azogues</option>
+          <option value="canar">Cañar</option>
+        </select>
+  
+        <select [(ngModel)]="sector">
+          <option value="sector1">Sector</option>
+          <option value="sector2">Sector 2</option>
+          <option value="sector3">Sector 3</option>
+        </select>
+      </div>
+  
+      <!-- Botón de búsqueda -->
+      <div class="button-group">
+        <button class="search-button" (click)="searchProperties()">BUSCAR</button>
+      </div>
+  
+      <!-- Opción de búsqueda por código -->
+      <button class="code-search-button">BUSCAR POR CÓDIGO</button>
+    </div>
+    </div>
+  </div>
+  
+</section>
+
+
+
+
+
+
+  <a href="#seccion-2" class="scroll-down" *ngIf="!showScrollUp" (click)="scrollToSection('seccion-2')">
+    <img src="assets/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha">
+  </a>
+  
+    <!-- Flecha para desplazarse hacia arriba (oculta inicialmente) -->
+  <a href="#top" class="scroll-up" *ngIf="showScrollUp" (click)="scrollToTop()">
+    <img src="assets/imagenes/flecha-arriba.png" alt="Flecha arriba" class="flecha">
+  </a>
+
+
+  <section class="video">
+
+    <video autoplay loop muted >
+      <source src="assets/imagenes/Comp 1_2_1.mp4" type="video/mp4">
+      Tu navegador no soporta la etiqueta de video.
+    </video>    
+
+  </section>
+
+
+
+
+</section>
+
+
+<div class="dest">
+<i class="fas fa-repeat"></i>
+<p>DESTACADOS</p>
+</div>
+
+
+  <div class="property-grid" id="seccion-2">
+    <!-- Mostrar las 9 propiedades aleatorias -->
+    <div class="property-card" *ngFor="let property of randomProperties">
+      <img [src]="property.url_img" alt="Propiedad" class="property-img">
+      <div class="property-details">
+        <h3>{{ property.TipoPropiedad }} - {{ property.Estado }}</h3>
+      </div>
+      
+  
+
+      <div class="property-detailss">
+
+        <h2>${{ property.Precio_Venta }}</h2>
+        <p class="dos">{{ property.Direccion_Sector }}</p>
+
+
+        <div class="iconoi">
+
+        <div clas="interno">
+        <i class="fas fa-bed" ></i>
+        <p class="tres">{{ property.HAB }}</p>
+        </div>
+
+        <div clas="interno">
+        <i class="fas fa-bath"></i>
+        <p class="tres">{{ property.BNO }}</p>
+        </div>
+
+        <div clas="interno">
+        <i class="fas fa-warehouse"></i>
+        <p class="tres">{{ property.BNO }}</p>
+        </div>
+        </div>
+
+      </div>
+
+      
+      
+      <div class="property-detailsss">
+      
+      <p> Mas informacion:</p>
+
+      <div class="botones-mas">
+      <button>
+      <i class="fas fa-plus"></i>
+      </button>
+
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fenix.ec.inmobiliaria@gmail.com" target="_blank">
+      <button >
+        <i class="fas fa-envelope"></i></button>
+      </a>
+
+        <!-- Botón de WhatsApp -->
+      <a [href]="createWhatsappLink(property)" target="_blank">
+        <button >
+          <i class="fab fa-whatsapp"></i>
+        </button>
+      </a>
+
+      </div>
+
+    </div>
+      
+    </div>
+  </div>
+  
+  
+
+
+  
+  <router-outlet></router-outlet>
+  

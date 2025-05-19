@@ -1,0 +1,125 @@
+
+  
+  /*  CABECERA  */
+  
+  
+  .custom-toolbar {
+    display: flex;          /* Usamos Flexbox */
+    justify-content: space-between;  /* Distribuye los elementos (logo y botones) de manera que estén a los extremos */
+    align-items: center;    /* Centra los elementos verticalmente */
+    padding: 10px 20px;     /* Agrega algo de espacio alrededor */
+    background-color: black; /* Fondo blanco para la barra (puedes cambiar el color) */
+
+  }
+  
+  .logo {
+    width: 306px;
+    height: 153px;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+  } 
+
+  .botones {
+    display: flex;          /* Usamos Flexbox para distribuir los botones */
+    /* Alineamos los botones al principio de la barra */
+    margin-right: 150px;
+  }
+  
+
+  
+  .btninicio{
+    width: 105px;
+    height: 58px;
+    flex-shrink: 0;
+    color: #FFBE2D;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+  }
+  
+  .btnacercade{
+  width: 181px;
+  height: 58px;
+  color: #FFF;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+  
+  .google-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .google-logo {
+    width: 30px;  /* Ajusta el tamaño según sea necesario */
+    height: auto;
+  }
+  
+
+  /* Responsividad para pantallas medianas (tabletas) y pequeñas (móviles) */
+@media (max-width: 1024px) {
+  .custom-toolbar {
+    flex-direction: column;    /* Apila los elementos verticalmente en pantallas pequeñas */
+    justify-content: center;   /* Centra los elementos */
+    align-items: center;
+  }
+
+  .botones{
+    gap: 15px;
+  }
+  
+
+  .logo {
+    width: 200px;  /* Reduce el tamaño del logo en pantallas pequeñas */
+    height: 100px;
+  }
+
+  .btninicio, .btnacercade {
+    font-size: 24px;  /* Reduce el tamaño de los botones */
+    width: auto;      /* Ajusta el tamaño de los botones */
+    margin: 5px 0;    /* Agrega un poco de margen entre los botones */
+    gap: 60px;
+  }
+
+  .google-logo {
+    width: 25px;  /* Ajusta el tamaño del logo de Google en pantallas pequeñas */
+  }
+}
+
+/* Responsividad para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+  .custom-toolbar {
+    padding: 20px 10px;  /* Reduce el espaciado alrededor de la barra */
+  }
+
+
+  .logo {
+    width: 150px;  /* Reduce aún más el tamaño del logo */
+    height: 75px;
+  }
+
+  .botones{
+    gap: 15px;
+    margin-right: 0px;
+  }
+  
+
+  .btninicio, .btnacercade {
+    font-size: 15px;  /* Tamaño más pequeño para los botones en pantallas muy pequeñas */
+    width: auto;
+  }
+
+  .google-logo {
+    width: 20px;  /* Ajusta el tamaño del logo de Google aún más */
+  }
+}
