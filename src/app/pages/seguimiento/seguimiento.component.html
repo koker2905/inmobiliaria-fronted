@@ -1,0 +1,105 @@
+<div class="seguimiento-container">
+
+
+    <div class="form-column">
+
+<div class="seguimiento-form">
+    <h2>Registrar Seguimiento</h2>
+  
+    <!-- ✅ SECCIÓN 1: Cliente existente -->
+    <label for="cliente">Cliente existente:</label>
+    <select id="cliente" [(ngModel)]="seguimiento.clienteId">
+      <option value="">Seleccione un cliente</option>
+      <option *ngFor="let c of clientes" [value]="c.id">{{ c.nombre }}</option>
+    </select>
+  
+    <p>¿El cliente no está en la lista?</p>
+    <button (click)="mostrarFormularioCliente = !mostrarFormularioCliente">
+      {{ mostrarFormularioCliente ? 'Cancelar nuevo cliente' : 'Agregar nuevo cliente' }}
+    </button>
+  
+    <!-- ✅ SECCIÓN 2: Agregar nuevo cliente -->
+    <div *ngIf="mostrarFormularioCliente" class="nuevo-cliente-form">
+      <label>Nombre:</label>
+      <input type="text" [(ngModel)]="nuevoCliente.nombre" />
+  
+      <label>Correo:</label>
+      <input type="email" [(ngModel)]="nuevoCliente.correo" />
+  
+      <label>Teléfono:</label>
+      <input type="text" [(ngModel)]="nuevoCliente.telefono" />
+  
+      <button (click)="crearNuevoCliente()">Guardar Cliente</button>
+    </div>
+  
+    <hr />
+  
+    <!-- ✅ SECCIÓN 3: Código IPD -->
+    <label for="ipd">Propiedad (Código IPD):</label>
+    <select id="ipd" [(ngModel)]="seguimiento.propiedadCodigoIPD">
+      <option value="">Seleccione un código</option>
+      <option *ngFor="let cod of codigosIPD" [value]="cod">{{ cod }}</option>
+    </select>
+  
+    <!-- ✅ SECCIÓN 4: Tipo -->
+    <label for="tipo">Tipo:</label>
+    <select id="tipo" [(ngModel)]="seguimiento.tipo">
+      <option value="venta">Venta</option>
+      <option value="renta">Renta</option>
+    </select>
+  
+    <!-- ✅ SECCIÓN 5: Estado -->
+    <label for="estado">Estado:</label>
+    <select id="estado" [(ngModel)]="seguimiento.estado">
+      <option value="contactado">Contactado</option>
+      <option value="visita agendada">Visita agendada</option>
+      <option value="en negociación">En negociación</option>
+      <option value="cerrado">Cerrado</option>
+    </select>
+  
+    <!-- ✅ SECCIÓN 6: Observaciones -->
+    <label for="obs">Observaciones:</label>
+    <textarea id="obs" rows="4" [(ngModel)]="seguimiento.observaciones"></textarea>
+  
+    <button (click)="guardarSeguimiento()">Guardar Seguimiento</button>
+  </div>
+</div>
+
+
+<div class="lista-column">
+    <div class="tabs">
+      <button [class.activo]="tipoFiltro === 'venta'" (click)="tipoFiltro = 'venta'">Venta</button>
+      <button [class.activo]="tipoFiltro === 'renta'" (click)="tipoFiltro = 'renta'">Renta</button>
+      <button [class.activo]="tipoFiltro === 'pendiente'" (click)="tipoFiltro = 'pendiente'">Pendientes</button>
+      <button (click)="generarPDF('venta')"  style="background-color: blue;">📄 PDF Venta</button>
+      <button (click)="generarPDF('renta')"   style="background-color: blue;">📄 PDF Renta</button>
+    </div>
+  
+    <div class="pdf-buttons">
+
+    </div>
+  
+    <div class="lista-seguimientos">
+      <div *ngFor="let s of seguimientosFiltrados()" class="seguimiento-card">
+     
+       <img [src]="obtenerImagenPropiedad(s.propiedadCodigoIPD)" class="prop-img"/>
+        
+        <div class="info">
+          <p><strong>Cliente:</strong> {{ obtenerNombreCliente(s.clienteId) }}</p>
+          <p><strong>Telefono:</strong> {{ obtenerNumeroCliente(s.clienteId) }}</p>
+          <p><strong>Propiedad:</strong> {{ s.propiedadCodigoIPD }}</p>
+          <p><strong>Estado:</strong> {{ s.estado }}</p>
+          <p><strong>Fecha:</strong> {{ s.fecha }}</p>
+          <p><strong>Observaciones:</strong> {{ s.observaciones }}</p>
+        </div>
+  
+        <div class="acciones">
+          <button (click)="editarSeguimiento(s)" style="background-color: green;">✏️ Modificar</button>
+          <button (click)="eliminarSeguimiento(s.id)" style="background-color: red;">🗑️ Eliminar</button> 
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</div>

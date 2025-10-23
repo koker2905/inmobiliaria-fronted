@@ -12,16 +12,16 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes),
     provideFirebaseApp(() => initializeApp({
-      projectId: "inmobiliariafenix-1c6c0",
-      appId: "1:242999387978:web:7afc48c715ff7a4a3383b3",
-      storageBucket: "inmobiliariafenix-1c6c0.firebasestorage.app", // Tu storageBucket
-      apiKey: "AIzaSyAOG6K9wERYQaB8LMVSbmvzD0UPr9Y20_k",
-      authDomain: "inmobiliariafenix-1c6c0.firebaseapp.com",
-      messagingSenderId: "242999387978",
-      measurementId: "G-W0PRPQMD31"
+      projectId: "finalinmobiliaria",
+      appId: "1:961419030404:web:51f12231b7121f9f2577d1",
+      apiKey: "AIzaSyCQOl7UQEncSw_aAoZINPCxM-6VVb8SY3A",
+      storageBucket: "finalinmobiliaria.firebasestorage.app",
+      authDomain: "finalinmobiliaria.firebaseapp.com",
+      messagingSenderId: "961419030404",
+      measurementId: "G-CCDE50PM7L"
     })),
     provideAuth(() => getAuth()), 
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()) // Agregar Firebase Storage
+    provideStorage(() => getStorage())
   ]
 };

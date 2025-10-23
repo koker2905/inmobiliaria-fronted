@@ -1,10 +1,9 @@
 .todo{
   background: linear-gradient(to bottom, #000000, #141414);
+    width: 100%;                /* Asegura que el contenedor ocupe todo el ancho disponible */
+
 }
 
-.abajo{
-  background: linear-gradient(to uppercase, #000000, #141414);
-}
 
 /* Contenedor principal que dividirá el espacio en dos */
 .section-container {
@@ -35,6 +34,7 @@
 .left-side h1 {
   font-size: 2rem;
   font-weight: bold;
+  margin: auto;
 }
 
 .left-side p {
@@ -84,19 +84,18 @@
 }
 
 .filters {
-  align-items: left;
   text-align: center;
 }
 
 .filters h1 {
   font-size: 1.5rem;
   margin-bottom: 20px;
+  margin: auto;
 }
 
 .filters h2 {
   font-size: 20px;
   margin-bottom: 10px;
-  font-style: bold;
 }
 
 .filters p {
@@ -122,10 +121,16 @@
 
 }
 
-.button:hover {
-  background-color: #FF9B00;
+/* Estilo cuando el botón está seleccionado */
+.button-selected {
+  background-color: #FF9B00; /* Color más brillante cuando está seleccionado */
 }
 
+/* Estilo para cuando el botón no está seleccionado (opcional, si quieres que el botón no seleccionado sea más claro) */
+.button:not(.button-selected) {
+  background-color: #FFBE2D;
+  opacity: 0.7; /* Hace que los botones no seleccionados sean más suaves */
+}
 /* Filtros de búsqueda */
 .search-filters {
   display: flex;
@@ -135,20 +140,144 @@
   font-family: Roboto;
 }
 
-select {
+.primerF{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.primerF p{
+  font-size: 1rem;
+}
+
+.segundoF{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.segundoF p{
+  font-size: 1rem;
+}
+
+.tercerF{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.tercerF p{
+  font-size: 1rem;
+}
+
+.codigo{
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.codigo input{
+  width: 60px;
+   padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;  
+}
+
+.search-filterss {
+
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-family: Roboto;
+}
+
+.search-filters select {
   padding: 10px;
   font-size: 1rem;
   border-radius: 5px;
   border: 1px solid #ccc;
+  white-space: normal; /* Permite el salto de línea */
+  word-wrap: break-word; /* Rompe las palabras largas si es necesario */
+}
+
+.search-filterss select {
+  width: 50%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  white-space: normal; /* Permite el salto de línea */
+  word-wrap: break-word; /* Rompe las palabras largas si es necesario */
+}
+
+.search-filterss select option {
+  white-space: normal;
+  word-break: break-word;
+}
+
+
+/* Estilo general del ng-select */
+.ng-sector-select {
+  width: 100%;
+  max-width: 300px;   /* Ajusta si necesitas más o menos ancho */
+  padding: 10px;
+  background-color: #f2f2f2;
+  color: black;
+  border-radius: 5px;
+  margin: 0 auto;       /* Centra horizontalmente */
+  display: block;
+}
+
+/* Centrado del contenedor */
+.select-wrapper {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+::ng-deep .ng-dropdown-panel {
+  margin-top: 10px !important; 
+  margin-left: 0px !important; 
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff !important;
+  border: 1px solid #ccc !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .ng-dropdown-panel .ng-option {
+
+  white-space: normal !important;
+  word-break: break-word;
+  background-color: #e4e4e4 !important;
+  color: black !important;
+  padding: 10px;
+  border-bottom: 1px solid #cdcdcd;
+}
+
+::ng-deep .ng-dropdown-panel .ng-option:hover {
+  background-color: #999595 !important;
+}
+
+::ng-deep .ng-dropdown-panel .ng-option-selected {
+  background-color: #dbeafe !important;
+  font-weight: bold;
 }
 
 select:hover{
-
  color:#000000;
- 
 }
-
-
 
 /* Estilo del botón de búsqueda */
 .search-button {
@@ -183,18 +312,17 @@ select:hover{
   color: #333;
 }
 
-
 /* Seccion botones con imagenes */
 
 .arriba h1,
 .arriba p {
   line-height: 1.8;
+  margin: auto;
 }
 
 .arriba p{
   font-size: 16px;
 }
-
 
 /* Seccion botones con imagenes */
 
@@ -240,13 +368,10 @@ select:hover{
 }
 
 
-
-
 /* FLECHA */
 .scroll-down, .scroll-up {
   position: fixed;
   left: 50%;  
-
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -269,19 +394,21 @@ select:hover{
 
 
 
-.video {
-          /* Usamos Flexbox */
+.videos {
+
  /* Distribuye los elementos (logo y botones) de manera que estén a los extremos */
  justify-content: center; 
  display: flex;    
  align-items:  center;   /* Centra los elementos verticalmente */
  padding: 100px 35px;     /* Agrega algo de espacio alrededor */
- width: 1100px;
  margin-left: auto;
  margin-right: auto;
 
 }
 
+.video {
+  width: 80%;
+ }
 
 
 .dest{
@@ -322,12 +449,15 @@ select:hover{
   font-family: Roboto;
 }
 
-.property-img {
+.imagenProp{
+  display: block;
   width: 100%;
   height: 250px;
   object-fit: cover;
-
+  margin: 0;
+  padding: 0;
 }
+
 
 .property-details {
   padding: 5px;
@@ -338,34 +468,39 @@ select:hover{
 }
 
 .property-detailss {
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   background-color: rgb(30, 30, 30);
-  height: 150px;
+  height: auto;
+  margin-top: 0%;
 
 }
 
 .property-detailsss {
-  text-align: center;
-  height: 35px;
+  
+  height: 40px;
   display: flex;
+  align-items: center; 
   
 }
 
 .property-detailsss p{
   color:black;
-  padding-top: 5px;
-  font-weight: 400;
-  margin-left: 15px;
+  font-weight: 500;
+  height: 5px;
+  margin-left: 25px;
+  margin-top: 11px;
 
 }
 
 .botones-mas{
-  margin-left: 50px;
-  gap:20px;
+  margin-left: 30px;
+  gap: 35px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
+
 
 .property-details h3 {
   font-size: 17px;
@@ -383,6 +518,7 @@ select:hover{
 .property-detailss h2 {
   font-size: 2rem;
   color: #ffffff;
+  margin-bottom: 3px;
 }
 
 .botones-mas i{
@@ -442,6 +578,7 @@ select:hover{
 
   .arriba h1{
     font-size: 20px;
+    margin: auto;
   }
 
   .btncatalogo {
@@ -458,7 +595,9 @@ select:hover{
   }
 
   .left-side h1 {
+    font-size: 1.5rem;
     font-weight: bold;
+    margin: auto;
   }
   
   .left-side p {
@@ -484,10 +623,13 @@ select:hover{
     flex-direction: column;
   }
   
-  
+  .button-group {
+    margin-bottom: 0px;
+  }
+
   /* Estilo del botón de búsqueda */
   .button {
-    font-size: 0.8rem;
+    font-size:  1rem;
     padding: 10px 15px;
   }
   
@@ -509,7 +651,19 @@ select:hover{
     font-size: 0.8rem;
     margin-top: 10px;
   }
+
+  .ng-sector-select {
+    width: 70%;
+  }
+
+  .search-filters {
+
+    justify-content: center;
+    gap: 0px;
+  }
   
+
+
   /* Seccion botones con imagenes */
  
   .btnconimagen {
@@ -521,9 +675,15 @@ select:hover{
 
   /* Seccion video */
 
-  .video{
+  .videos{
     margin-top: 10px;
     margin-bottom: 30px;
+    padding: 0%;
+  }
+
+  .video{
+    width: 100%;
+   
   }
 
 
@@ -546,7 +706,7 @@ select:hover{
 
     .property-card {
       
-      width: 80%;
+      width: 90%;
       margin-left: auto;
       margin-right: auto;
   
@@ -561,17 +721,11 @@ select:hover{
       padding: 5px;
     }
 
-    
-    
-    
-  
-
     .property-detailsss {
       height: 40px;
-      margin-left: auto;
-      margin-right: auto;
       margin-top: 5px;
-
+      align-items: center; 
+      justify-content: center; 
     }
 
     .property-detailsss p{
@@ -582,20 +736,18 @@ select:hover{
 
     .botones-mas{
       
-     
+      margin-left: 0px;
       gap:30px;
 
     }
 
     .botones-mas i{
-      
       font-size: 22px; 
       margin-left: auto;
       margin-right: auto;
       
     }
 
- 
 
     .property-details h3 {
       font-size: 14px;
@@ -610,12 +762,6 @@ select:hover{
       color: #ffffff;
     }
 
-    .video{
-      width: 100%;
-      height: auto;
-      padding: 0%;
-    }
-    
   
     .properties-column {
       width: 100%;
@@ -631,28 +777,7 @@ select:hover{
       font-size: 1rem;
       color: #333;
     }
-  
 
+
+  
   }
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-  

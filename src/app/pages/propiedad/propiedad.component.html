@@ -1,0 +1,132 @@
+<div class="property-card" *ngIf="property">
+  <h2>Editar Propiedad</h2>
+
+
+  <div class="property-form-grid">
+
+  <div class="property-form-group">
+  <label>Tipo:</label>
+  <input type="text" [(ngModel)]="property.TipoPropiedad" />
+  </div>
+
+  <div class="property-form-group">
+    <label>Código de la propiedad (IPD):</label>
+    <input type="text" [(ngModel)]="property.IPD" [readonly]="true" />
+   </div>
+
+  <div class="property-form-group">
+  <label>Amoblado:</label>
+  <input type="text" [(ngModel)]="property.Amoblado" />
+  </div>
+
+  <div class="property-form-group">
+  <label>Área de Construcción:</label>
+  <input type="number" [(ngModel)]="property.AreaCons" />
+  </div>
+
+  <div class="property-form-group"> 
+  <label>Área de Terreno:</label>
+  <input type="number" [(ngModel)]="property.AreaTerreno" />
+</div>
+
+  <div class="property-form-group">
+  <label>Bodega:</label>
+  <input type="text" [(ngModel)]="property.BDG" />
+  </div>
+
+  <div class="property-form-group">
+  <label>Baños:</label>
+  <input type="number" [(ngModel)]="property.BNO" />
+   </div>
+
+  <div class="property-form-group">
+  <label>Tipo de propiedad base (COD):</label>
+  <input type="text" [(ngModel)]="property.COD" />
+  </div>
+
+  <div class="property-form-group">
+  <label>Dirección / Sector:</label>
+  <input type="text" [(ngModel)]="property.Direccion_Sector" />
+ </div>
+
+  <div class="property-form-group">
+  <label>Edificio / Urbanización:</label>
+  <input type="text" [(ngModel)]="property.Edif_Urb" />
+  </div>
+
+  <div class="property-form-group">
+  <label>Encargado:</label>
+  <input type="text" [(ngModel)]="property.Encargado" />
+  </div>
+
+  <div class="property-form-group">
+  <label>Estado:</label>
+  <input type="text" [(ngModel)]="property.Estado" />
+  </div>
+
+  <div class="property-form-group">
+  <label>Extras:</label>
+  <textarea [(ngModel)]="property.Extras"></textarea>
+  </div>
+
+  <div class="property-form-group">
+  <label>Garage:</label>
+  <input type="text" [(ngModel)]="property.GRJ" />
+ </div>
+
+  <div class="property-form-group">
+  <label>Habitaciones:</label>
+  <input type="number" [(ngModel)]="property.HAB" />
+ </div>
+
+
+
+  <div class="property-form-group">
+  <label>Lavandería:</label>
+  <input type="text" [(ngModel)]="property.LVD" />
+  </div>
+
+  <div class="property-form-group">
+  <label>Piso:</label>
+  <input type="text" [(ngModel)]="property.Piso" />
+  </div>
+
+  <div class="property-form-group">
+  <label>Precio de Venta:</label>
+  <input type="number" [(ngModel)]="property.Precio_Venta" />
+ </div>
+
+  <div class="property-form-group">
+  <label>Tipo de propiedad:</label>
+  <input type="text" [(ngModel)]="property.TipoPropiedad" />
+  </div>
+
+  </div>
+
+<h3>Imagen principal:</h3>
+
+<!-- Mostrar todas las imágenes existentes -->
+<div *ngIf="imagenesPropiedad.length > 0" class="imagenes-grid">
+  <div *ngFor="let img of imagenesPropiedad">
+    <img [src]="img" alt="Imagen" />
+    <button (click)="eliminarImagenYActualizarFirestore(img)">🗑</button>
+  </div>
+</div>
+
+<!-- Mostrar mensaje si no hay imágenes -->
+<div *ngIf="imagenesPropiedad.length === 0">
+  <p>❗ No hay imágenes disponibles para esta propiedad.</p>
+</div>
+
+
+  
+
+  <h4>Subir nuevas imágenes:</h4>
+  <input type="file" (change)="onImagenesSeleccionadas($event)" multiple />
+  <button (click)="subirNuevasImagenes()">Subir imágenes</button>
+
+  <div class="action-buttons">
+    <button (click)="guardarCambios()">💾 Guardar</button>
+    <button (click)="cancelar()">❌ Cancelar</button>
+  </div>
+</div>

@@ -1,99 +1,122 @@
-import { Component, inject, HostListener, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Property } from '../../models/property';
 import { PropertyService } from '../../services/property.service';
-import { AuthService } from '../../services/auth.service';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule,FormsModule],
+  imports: [RouterOutlet, CommonModule,FormsModule, NgSelectModule,RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'] // Corregido a 'styleUrls' (con 's')
 })
 export class HomeComponent implements AfterViewInit {
   properties: Property[] = [];
-  randomProperties: Property[] = []; 
-  private authService = inject(AuthService);
+
+  randomProperties: Property[] = [];
+
   showScrollUp: boolean = false;
+  selectedFilter: string = 'venta';
+
+  busquedaActiva: boolean = false;
 
 
+  propertyTypes: string[] = [];
 
-  accion: string = 'arrendar';
-  propertyType: string = 'casa';  // Tipo de propiedad seleccionado
-  location: string = 'cuenca';    // Ciudad seleccionada
-  sector: string = 'sector1';     // Sector seleccionado
 
-  propertiesi: any[] = [];        // Todas las propiedades
+  accion: string = '';
+  propertyType: string = '';  // Tipo de propiedad seleccionado
+  city: string = '';    // Ciudad seleccionada
+  sector: string = '';     // Sector seleccionado
+  estado: string = 'En Venta'; 
+  codigo: string = '';   
+
+  cities: string[] = [];
+  sectors: string[] = [];
+
   filteredProperties: any[] = []; // Propiedades filtradas
+  imageRotationIntervals: { [key: string]: any } = {};
+
+  @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
 
   constructor(private propertyService: PropertyService, private router: Router) {} // Inyectando el router
-
+  
   ngOnInit(): void {
-    // Obtener propiedades desde el servicio y asignarlas a la variable 'properties'
-    this.propertyService.getPropiedades().subscribe(
-      (properties) => {
-        this.randomProperties = this.getRandomProperties(properties, 9);
-        console.log('Propiedades aleatorias:', this.randomProperties);
-      },
-      (error) => {
-        console.error('Error al obtener propiedades aleatorias:', error);
-      }
-    );
+    this.propertyService.getPropiedades().subscribe((properties) => {
+      const propiedadesConImagenes = properties
+        .filter(p => Array.isArray(p.imagenes) && p.imagenes.length > 0)
+        .map(p => ({
+          ...p,
+          imagenActualIndex: 0
+        }));
+  
+      this.randomProperties = this.getRandomProperties(propiedadesConImagenes, 9);
+  
+      this.properties = properties.map(p => ({
+        ...p,
+        TipoPropiedad: p.TipoPropiedad?.toUpperCase().trim() || '',
+        CIUDAD: p.CIUDAD?.toUpperCase().trim() || '',
 
+      }));
 
-  }
+      console.log('📋 Todos los tipos de propiedad cargados (raw):');
+this.properties.forEach(p => {
+  console.log(`- [${p.TipoPropiedad}]`);
+});
 
 
 
   
-  // Métodos de navegación
-  goToGestion(): void {
-    this.router.navigateByUrl('/home-admin/espacios');
+      this.cities = Array.from(new Set(this.properties.map(p => p.CIUDAD))).filter(c => !!c);
+  
+      this.propertyTypes = Array.from(
+        new Set(this.properties.map(p => this.limpiarTextoTipo(p.TipoPropiedad)))
+      ).filter(t => !!t);
+      
+  
+      if (this.city) {
+        this.updateSectors();
+      }
+    });
+  }
+  
+
+
+  
+  
+  
+  limpiarTextoSector(texto: string): string {
+    return texto
+      .toLowerCase()
+      .replace(/\b(av\.?|avenida|sector|calle|c\.|cdla\.|urb\.?)\b/g, '')
+      .replace(/[.,]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toUpperCase();
   }
 
-  goToContratos(): void {
-    this.router.navigateByUrl('/home-admin/contratos');
-  }
 
-  goToTarifas(): void {
-    this.router.navigateByUrl('/home-admin/tarifas');
+  limpiarTextoTipo(tipo: string): string {
+    return tipo
+      .toUpperCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // quita tildes
+      .replace(/\(.*?\)/g, '')                         // remueve paréntesis con contenido
+      .replace(/[0-9]+/g, '')                          // elimina números
+      .replace(/M2|M²|M\^2/g, '')                      // elimina m2 variantes
+      .replace(/[^A-Z\s]/g, '')                        // elimina símbolos raros
+      .replace(/\s+/g, ' ')                            // reduce espacios
+      .trim();
   }
-
-  goToHorarios(): void {
-    this.router.navigateByUrl('/home-admin/horarios');
-  }
-
-  goToGestionProfile(): void {
-    this.router.navigateByUrl('/home-admin/perfiles');
-  }
-
-  goToIngreso(): void {
-    this.router.navigateByUrl('/home-admin/ingreso');
-  }
+  
+  
 
   goToCatalogo(): void {
     this.router.navigateByUrl('/catalogo');
-  }
-
-  goToHistorial(): void {
-    this.router.navigateByUrl('/home-admin/historial');
-  }
-
-  // Función para login con Google
-  loginWithGoogle() {
-    this.authService.loginWithGoogle()
-      .then(result => {
-        console.log('Usuario logueado:', result.user);
-        // Redirigir o realizar otra acción después de loguearse
-      })
-      .catch(error => {
-        console.error('Error en login con Google:', error);
-      });
   }
 
   // Método para hacer scroll hacia una sección
@@ -111,6 +134,11 @@ export class HomeComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.observeSection();
+
+    if (this.videoPlayer && this.videoPlayer.nativeElement) {
+      this.videoPlayer.nativeElement.muted = true;
+      this.videoPlayer.nativeElement.volume = 0;
+    }
   }
 
   // Usamos IntersectionObserver para cambiar la dirección de la flecha cuando pasamos de la sección
@@ -138,51 +166,105 @@ export class HomeComponent implements AfterViewInit {
   }
 
 
+// Función para obtener propiedades aleatorias sin repeticiones
+getRandomProperties(properties: any[], num: number): any[] {
+  return this.shuffle(properties).slice(0, num);
+}
 
-    // Función para obtener propiedades aleatorias sin repeticiones
-    getRandomProperties(properties: Property[], num: number): Property[] {
-      // Mezclar el array de propiedades aleatoriamente (Fisher-Yates Shuffle)
-      const shuffledProperties = this.shuffle(properties);
-      // Devolver las primeras 'num' propiedades
-      return shuffledProperties.slice(0, num);
-    }
+// Función para mezclar el arreglo (algoritmo Fisher-Yates)
+shuffle(array: any[]): any[] {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+   // Función para actualizar los sectores según la ciudad
+   updateSectors() {
+    const sectoresUnicos = this.properties
+      .filter(p => p.CIUDAD === this.city.toUpperCase().trim())
+      .map(p => p.Direccion_Sector)
+      .filter((s, i, arr) => !!s && arr.indexOf(s) === i); // elimina duplicados exactos
   
-    // Función para mezclar el arreglo (Fisher-Yates Shuffle)
-    shuffle(array: Property[]): Property[] {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Intercambiar los elementos
-      }
-      return array;
+    this.sectors = sectoresUnicos;
+  }
+
+    // Función que se llama cuando se cambia la ciudad
+    onCityChange(city: string) {
+      this.city = city;
+      this.updateSectors();  // Actualiza los sectores cuando cambia la ciudad
+    }
+    onSectorChange(sector: string) {
+      this.sector = sector;
     }
 
       // Crear el enlace de WhatsApp con la información de la propiedad
   createWhatsappLink(property: Property): string {
-    const phoneNumber = '593998877665'; // El número de teléfono al que se enviará el mensaje (sin '+')
-    const message = `¡Hola! Me interesa la propiedad en ${property.TipoPropiedad} con un precio de $${property.Precio_Venta}.`;
-    return `https://wa.me/${+593963739789}?text=${encodeURIComponent(message)}`;
+
+    const message = `¡Hola! Me interesa la propiedad en ${property.TipoPropiedad} con el codigo${property.IPD}. Ubicada en el sector: ${property.Direccion_Sector}. `;
+    return `https://wa.me/${+593998683511}?text=${encodeURIComponent(message)}`;
   }
 
 
-
-  filterProperties(accionb : string){
-    this.accion=accionb;
+  searchProperties(): void {
+    const tipoLimpio = (this.propertyType || '').toUpperCase().trim();
+    const ciudadLimpia = (this.city || '').toUpperCase().trim();
+    const estadoLimpio = (this.estado || '').toUpperCase().trim();
+  
+    this.busquedaActiva = true;
+  
+    this.filteredProperties = this.properties.filter(property => {
+      const tipoPropiedadRaw = property.TipoPropiedad || '';
+      const tipoPropiedadLimpio = this.limpiarTextoTipo(tipoPropiedadRaw);
+      const tipoComparado = tipoPropiedadLimpio.replace(/\s+/g, '');
+      const tipoBuscado = tipoLimpio.replace(/\s+/g, '');
+  
+      const ciudadOk = !ciudadLimpia || property.CIUDAD === ciudadLimpia;
+      const estadoOk = !estadoLimpio || (property.Estado || '').toUpperCase().trim() === estadoLimpio;
+  
+      // Logs de depuración
+ 
+      return (
+        (!tipoLimpio || tipoComparado.includes(tipoBuscado)) &&
+        ciudadOk &&
+        estadoOk
+      );
+    });
+  
+    console.log('🔎 Buscando tipo:', tipoLimpio);
+    console.log('✅ Resultados encontrados:', this.filteredProperties);
+  
+    setTimeout(() => this.scrollToSection('seccion-2'), 100);
   }
   
-    // Función de búsqueda basada en los filtros seleccionados
-    searchProperties(): void {
-
-      this.router.navigate(['/catalogo'], {
-        queryParams: {
-          propertyType: this.propertyType,
-          city: this.location,
-          sector: this.sector,
-          action: this.accion
-        }
-      });
-    }
-      
-
+  
+  
+  
+  
+  
+  searchPorCodigo(): void {
+    const codigoLimpio = (this.codigo || '').toUpperCase().trim();
+  
+    this.busquedaActiva = true;
+  
+    this.filteredProperties = this.properties.filter(property => {
+      const codigoPropiedad = (property.IPD || '').toUpperCase().trim();
+      return codigoPropiedad === codigoLimpio;
+    });
+  
+    console.log('🔍 Buscando código:', codigoLimpio);
+    console.log('✅ Resultados por código:', this.filteredProperties);
+  
+    setTimeout(() => this.scrollToSection('seccion-2'), 100);
+  }
+  
+  
+  
   
 
+  
+  
+
+    
 }

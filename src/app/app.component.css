@@ -17,13 +17,57 @@
     height: 153px;
     flex-shrink: 0;
     aspect-ratio: 1/1;
+    cursor: pointer;
   } 
 
   .botones {
     display: flex;          /* Usamos Flexbox para distribuir los botones */
     /* Alineamos los botones al principio de la barra */
     margin-right: 150px;
+   
   }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-toggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+  }
+  
+  .dropdown-menu {
+
+    position: absolute;
+    background-color: #333;
+    min-width: 200px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .dropdown-menu button {
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    width: 100%;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 18px;  /* Aumenta el tamaño aquí */
+    font-weight: 500; /* Opcional: más grueso */
+  }
+  
+  .dropdown-menu button:hover {
+    background-color: #555;
+  }
+  
+
   
 
   
@@ -38,6 +82,8 @@
     font-weight: 500;
     line-height: normal;
     cursor: pointer;
+    background: transparent;
+    border: none;
   }
   
   .btnacercade{
@@ -49,22 +95,11 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  background: transparent;
+  border: none;
   }
   
-  .google-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .google-logo {
-    width: 30px;  /* Ajusta el tamaño según sea necesario */
-    height: auto;
-  }
-  
+
 
   /* Responsividad para pantallas medianas (tabletas) y pequeñas (móviles) */
 @media (max-width: 1024px) {
@@ -109,17 +144,14 @@
   }
 
   .botones{
-    gap: 15px;
+    gap: 8px;
     margin-right: 0px;
   }
   
 
   .btninicio, .btnacercade {
-    font-size: 15px;  /* Tamaño más pequeño para los botones en pantallas muy pequeñas */
+    font-size: 13px;  /* Tamaño más pequeño para los botones en pantallas muy pequeñas */
     width: auto;
   }
 
-  .google-logo {
-    width: 20px;  /* Ajusta el tamaño del logo de Google aún más */
-  }
 }

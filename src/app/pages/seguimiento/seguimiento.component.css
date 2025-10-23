@@ -1,0 +1,254 @@
+.seguimiento-form {
+    max-width: 600px;
+
+    padding: 25px;
+    background-color: #000000;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .seguimiento-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFBE2D;
+  }
+  
+  .seguimiento-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .seguimiento-form select,
+  .seguimiento-form input,
+  .seguimiento-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #222;
+    color: #fff;
+    box-sizing: border-box;
+  }
+  
+  .seguimiento-form textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .seguimiento-form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color:  #FFBE2D; 
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .seguimiento-form button:hover {
+    background-color: #d6a700;
+  }
+  
+  .nuevo-cliente-form {
+    background-color: #111;
+    border: 1px solid #444;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+  }
+  
+  hr {
+    margin: 25px 0;
+    border: none;
+    height: 1px;
+    background-color: #555;
+  }
+
+
+
+  .seguimiento-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+    flex-wrap: wrap;
+
+  }
+  
+  .form-column {
+    flex: 1;
+    min-width: 350px;
+  }
+  
+  .lista-column {
+    flex: 1.2;
+    min-width: 400px;
+    background-color: #000000;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .tabs button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #444;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+ 
+  
+  .tabs button.activo {
+    background-color:  #FFBE2D;
+    color: #000;
+  }
+  
+  .lista-seguimientos {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .seguimiento-card {
+ 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    font-family: Roboto;
+    background-color: #FFBE2D;
+    color:black;
+    border: 1px solid #555;
+    padding: 15px;
+    border-radius: 8px;
+    border-width: 3px;
+  }
+  
+  .prop-img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    max-height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+
+  .acciones {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    
+  }
+
+  .acciones button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #444;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
+
+  
+
+  @media (max-width: 768px) {
+
+    .seguimiento-container {
+      flex-direction: column;
+      margin: 10px;
+      gap: 15px;
+    }
+  
+    .form-column,
+    .lista-column {
+      min-width: 100%;
+      width: 100%;
+    }
+  
+    .seguimiento-form {
+      padding: 15px;
+      border-radius: 10px;
+    }
+  
+    .seguimiento-form h2 {
+      font-size: 1.3rem;
+    }
+  
+    .seguimiento-form label {
+      font-size: 0.95rem;
+    }
+  
+    .seguimiento-form select,
+    .seguimiento-form input,
+    .seguimiento-form textarea {
+      font-size: 0.95rem;
+      padding: 8px;
+    }
+  
+    .seguimiento-form button {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+    }
+  
+    .tabs {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  
+    .tabs button {
+      flex: 1 1 45%;
+      font-size: 0.9rem;
+      padding: 8px;
+    }
+  
+    .lista-seguimientos {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .seguimiento-card {
+      padding: 12px;
+    }
+  
+    .acciones {
+      flex-direction: column;
+      gap: 8px;
+    }
+  
+    .pdf-buttons {
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      
+    }
+  
+    .prop-img {
+      width: 100%;
+      max-height: 140px;
+    }
+  }
+  

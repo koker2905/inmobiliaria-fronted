@@ -27,7 +27,6 @@
             
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-      
               "src/styles.css"
             ],
             "scripts": []
@@ -37,7 +36,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "1mb",
+                  "maximumWarning": "1.5mb",
                   "maximumError": "2mb"
                 },
                 {

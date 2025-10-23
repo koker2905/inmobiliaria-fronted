@@ -7,6 +7,7 @@ export interface Property {
     BDG: string;
     BNO: string;
     COD: string;
+    CIUDAD: string;
     Direccion_Sector : string;
     Edif_Urb: string;
     Encargado: string;
@@ -18,7 +19,10 @@ export interface Property {
     LVD: string;
     Piso: string;
     Precio_Venta: string;
+    PROCOD: string;
     TipoPropiedad: string;
-    url_img: string;
+    ImagenFolder: string;
+    imagenes?: string[];
+    imagenActualIndex?: number; 
   }
   

@@ -1,0 +1,349 @@
+
+/* Estilo para las tarjetas de propiedad */
+.codigo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #000000;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+}
+
+.codigo-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.codigo input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  min-width: 220px;
+  font-size: 1rem;
+}
+
+.btn {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: 600;
+}
+
+
+.codigo-buscar {
+  background-color: #007bff;
+  color: white;
+}
+
+.codigo-buscar:hover {
+  background-color: #0056b3;
+}
+
+.btn-agregar {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-agregar:hover {
+  background-color: #1e7e34;
+}
+
+.btn-export {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.btn-export:hover {
+  background-color: #e0a800;
+}
+
+
+.modal-eliminar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-contenido {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  max-width: 90%;
+  width: 400px;
+  font-family: Roboto;
+}
+
+.modal-contenido h3 {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.modal-botones .btn-confirmar {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-botones .btn-cancelar {
+  background-color: #6c757d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 50px;
+    padding: 20px 200px;
+    padding-bottom: 80px;
+  }
+  
+  .property-card {
+    background-color: #FFBE2D;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    font-family: Roboto;
+  }
+  
+  .imagenProp{
+    display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  
+
+  
+  
+  
+  .property-details {
+    padding: 5px;
+    text-align: center; 
+    min-height: 10px;
+    background-color: rgb(21, 20, 20);
+    text-transform: uppercase;
+  }
+  
+  .property-detailss {
+    padding: 5px;
+    text-align: center;
+    background-color: rgb(30, 30, 30);
+    height: auto;
+    margin-top: 0%;
+  
+  }
+  
+  .property-detailsss {
+    
+    height: 40px;
+    display: flex;
+    
+  }
+  
+  .property-detailsss p{
+    color:black;
+    font-weight: 500;
+    height: 5px;
+    margin-left: 25px;
+    margin-top: 11px;
+  
+  }
+  
+  .botones-mas{
+    margin-left: 50px;
+    gap:20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .botones-mas button{
+    background-color: #ccc;
+    border-radius: 5px;
+  }
+  
+  .property-details h3 {
+    font-size: 17px;
+    color:rgb(255, 255, 255);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .property-details p {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .property-detailss h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 3px;
+  }
+  
+  .botones-mas i{
+    font-size: 25px;
+    color: #000000f0;
+  }
+  
+  .iconoi{
+    padding: 15px;
+    gap:50px;
+    display: inline-flex;
+  }
+  
+  .interno{
+    display: inline-flex;
+  }
+  
+
+  @media (max-width: 768px) {
+
+    .codigo-group {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .codigo input {
+      width: 100%;
+    }
+  
+    .btn {
+      width: 100%;
+    }
+
+
+    
+ /* Seccion casas*/
+
+
+ .property-card {
+      
+  width: 90%;
+  margin-bottom: 50px;;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.property-detailss {
+  min-height: 100px;
+  height: auto;
+}
+
+.iconoi{
+  padding: 5px;
+}
+
+
+
+
+
+
+.property-detailsss {
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+
+}
+
+.property-detailsss p{
+
+  display: none;
+  
+}
+
+.botones-mas{
+  
+ 
+  gap:30px;
+
+}
+
+.botones-mas i{
+  
+  font-size: 22px; 
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+
+
+.property-details h3 {
+  font-size: 14px;
+}
+
+.property-details p {
+  font-size: 0.7rem;
+}
+
+.property-detailss h2 {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+
+
+
+    .properties-column {
+      width: 100%;
+    }
+  
+    .property-grid {
+      grid-template-columns: 1fr;  /* Una sola columna en pantallas pequeñas */
+      padding: 10px 20px;
+      padding-bottom: 40px;
+      align-content: center;
+      display: block;
+    }
+  
+    .property-details p {
+      font-size: 1rem;
+      color: #333;
+    }
+    
+  }

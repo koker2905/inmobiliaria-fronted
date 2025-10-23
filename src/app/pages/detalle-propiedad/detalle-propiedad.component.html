@@ -1,0 +1,42 @@
+<div class="detalle-container" *ngIf="property">
+  <!-- Imagen principal -->
+  <div class="detalle-imagen">
+    <img [src]="imagenPrincipal" alt="Imagen de la propiedad" class="imagen-principal" />
+  </div>
+
+  <!-- Detalles -->
+  <div class="detalle-info">
+    <h2>{{ property.TipoPropiedad }} - {{ property.Estado }}</h2>
+    <p><strong>Precio:</strong> ${{ property.Precio_Venta }}</p>
+    <p><strong>Ubicación:</strong> {{ property.CIUDAD }} - {{ property.Direccion_Sector }}</p>
+    <p><strong>Area Construcción:</strong> {{ property.AreaCons }}</p>
+    <p><strong>Area Terreno:</strong> {{ property.AreaTerreno }}</p>
+    <p><strong>Código:</strong> {{ property.IPD }}</p>
+    <p><strong>Habitaciones:</strong> {{ property.HAB }}</p>
+    <p><strong>Baños:</strong> {{ property.BNO }}</p>
+    <p><strong>Bodega:</strong> {{ property.BDG }}</p>
+
+    <!-- Botones -->
+    <div class="detalle-botones">
+      <a [href]="createWhatsappLink(property)" target="_blank" class="icono-btn">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fenix.ec.inmobiliaria@gmail.com" target="_blank" class="icono-btn">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <button (click)="compartirPagina()" class="icono-btn">
+        <i class="fas fa-share-alt"></i>
+      </button>
+    </div>
+
+    <div class="galeria">
+      <img 
+        *ngFor="let img of property.imagenes" 
+        [src]="img" 
+        alt="Imagen adicional"
+        class="imagen-mini"
+        (click)="cambiarImagen(img)"
+      />
+    </div>
+  </div>
+</div>

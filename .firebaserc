@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "inmobiliariafenix-1c6c0"
-  }
+    "admin": "finalinmobiliaria",
+    "default": "finalinmobiliaria"
+  },
+  "targets": {},
+  "etags": {}
 }

@@ -1,0 +1,86 @@
+<div class="codigo">
+  <div class="codigo-group">
+    <input type="text" [(ngModel)]="codigo" placeholder="Ingrese el código" />
+    <button class="btn codigo-buscar" (click)="filterProperties()">🔍 Buscar</button>
+  </div>
+
+  <div class="codigo-group">
+    <button class="btn btn-agregar" (click)="agregarNuevaPropiedad()">➕ Nueva Propiedad</button>
+    <button class="btn btn-export" (click)="exportarListado('venta')">📄 En Venta</button>
+    <button class="btn btn-export" (click)="exportarListado('arriendo')">📄 En Arriendo</button>
+  </div>
+</div>
+
+
+
+<div class="property-grid">
+  <div class="property-card" *ngFor="let property of filteredProperties">
+
+    
+    <img 
+    [src]="property.imagenes?.[0] || 'assets/no-image.jpg'" 
+    alt="Imagen principal" 
+    class="imagenProp"
+  />
+  
+  
+  
+    <div class="property-details">
+      <h3>{{ property.TipoPropiedad }} - {{ property.Estado }}</h3>
+    </div>
+
+    <div class="property-detailss"> 
+      <h2>${{ property.Precio_Venta }}</h2>
+      <p>{{ property.Direccion_Sector }}</p>
+      <p>Codigo: {{ property.IPD }}</p>
+      <p>Enc: {{ property.PROCOD }}</p>
+
+
+      <div class="iconoi">
+        <div class="interno">
+          <i class="fas fa-bed"></i>
+          <p class="tres">{{ property.HAB }}</p>
+        </div>
+        <div class="interno">
+          <i class="fas fa-bath"></i>
+          <p class="tres">{{ property.BNO }}</p>
+        </div>
+        <div class="interno">
+          <i class="fas fa-warehouse"></i>
+          <p class="tres">{{ property.BNO }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="property-detailsss">
+      <p>Acciones:</p>
+      <div class="botones-mas">
+        <button *ngIf="property.id" (click)="modificarPropiedad(property.id)">
+          <i class="fas fa-edit"></i>
+        </button>
+        
+        <button *ngIf="property.id" (click)="prepararEliminacion(property.id)">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        
+
+        <button (click)="imprimirPDF(property)">
+          <i class="fas fa-file-pdf"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="mostrarConfirmacion" class="modal-eliminar">
+  <div class="modal-contenido">
+    <h3>¿Seguro que deseas eliminar esta propiedad?</h3>
+    <div class="modal-botones">
+      <button class="btn-confirmar" (click)="confirmarEliminacion()">✅ Confirmar</button>
+      <button class="btn-cancelar" (click)="cancelarEliminacion()">❌ Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

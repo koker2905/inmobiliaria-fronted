@@ -4,19 +4,56 @@
     justify-content: space-between;
     padding: 20px;
   }
+
+  .dos {
+
+    display: flex;
+    flex-direction: column;
+    width: 25%; /* o el mismo 20% que usas en .filters-column */
+    padding: 0 20px;
+    box-sizing: border-box;
+
+  }
+
+  .encabezado {
+    position: sticky;
+    top: 50px; /* Espacio desde el top cuando se fija */
+    display: flex;
+    align-self: flex-start;
+    height: fit-content;
+    flex-direction: column;
+    width: 100%; /* o el mismo 20% que usas en .filters-column */
+    padding: 15px 20px;
+    box-sizing: border-box;
+    background-color: #FFBE2D;;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .encabezado label{
+    font-family: Roboto;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color:black;
+  }
+  
   
   /* Columna de filtros */
   .filters-column {
-    width: 30%;
+    position: sticky;
+    top: 105px; /* Espacio desde el top cuando se fija */
+    align-self: flex-start;
+    height: fit-content;
     background-color: rgba(51, 51, 51, 0.3);
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: Roboto;
-    margin-left: 50px;
+    width: 80%;
   }
   
-  .filters-column h2 {
+  
+  .filters-column h2,   .filter22-column h2{
     text-align: center;
     margin-bottom: 20px;
   }
@@ -25,17 +62,67 @@
     margin-bottom: 15px;
   }
   
-  .filter label {
+  .filter label, .filter22 label{
     font-weight: bold;
+    font-size: 0.9rem;      /* Reduce tamaño de fuente */
+    margin-bottom: 4px;     /* Reduce espacio con el siguiente input/select */
+    display: block;         /* Asegura que el margen tenga efecto en bloque */
+    line-height: 1.2;       /* Opcional: reduce altura de línea */
+  
   }
   
+  
   .filter input, .filter select {
-    width: 100%;
+    
+    width: 50%;
     padding: 8px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+  .filter22 input, .filter22 select {
+    
+    width: 70%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    max-width: 400px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 5px;
+    outline: none;
+    margin-top: 5px;
+  }
+  
+  /* Bola deslizante */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #FFBE2D;
+    cursor: pointer;
+    border: 2px solid #333;
+    margin-top: -5px;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #FFBE2D;
+    cursor: pointer;
+    border: 2px solid #333;
+  }
+  
   
   button {
     width: 100%;
@@ -43,6 +130,8 @@
     background-color: #FFBE2D;
     border: none;
     color: white;
+    font-size: 1rem;
+    font-weight: 500;
     border-radius: 5px;
     cursor: pointer;
   }
@@ -50,29 +139,26 @@
   button:hover {
     background-color: #FF9B00;
   }
+
+  .encima{
+    width: 75%;
+    display: flex;
+    background-color: transparent;
+  }
   
   /* Columna de propiedades */
   .properties-column {
-    width: 65%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     background-color: transparent;
     gap: 30px;
     justify-content: center;
+    font-family: Roboto;
  
   }
   
-  /* Tarjetas de propiedades */
-  .property-card {
-    width: 400px;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
 
-  }
   
   .property-img {
     width: 100%;
@@ -106,4 +192,253 @@
   .view-more:hover {
     background-color: #FF9B00;
   }
+
+  
+
+  /* Tarjetas de propiedades */
+
+
+  .property-card {
+    width: 500px;
+    background-color: #FFBE2D;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+
+  }
+
+.imagenProp{
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+.property-details {
+  padding: 5px;
+  text-align: center; 
+  min-height: 10px;
+  background-color: rgb(21, 20, 20);
+  text-transform: uppercase;
+}
+
+.property-detailss {
+  padding: 5px;
+  text-align: center;
+  background-color: rgb(30, 30, 30);
+  height: auto;
+  margin-top: 0%;
+
+}
+
+.property-detailsss {
+  
+  max-height: 30px;
+  min-height: 40px;
+  display: flex;
+  align-items: center; 
+  
+}
+
+.property-detailsss p{
+  color:black;
+  font-weight: 500;
+  height: 5px;
+  margin-left: 25px;
+  margin-top: 11px;
+
+}
+
+.botones-mas{
+  margin-left: 75px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+
+.property-details h3 {
+  font-size: 17px;
+  color:rgb(255, 255, 255);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.property-details p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.property-detailss h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 3px;
+}
+
+.botones-mas i{
+  font-size: 25px;
+  color: #000000f0;
+}
+
+.iconoi{
+  padding: 15px;
+  gap:50px;
+  display: inline-flex;
+}
+
+.interno{
+  display: inline-flex;
+}
+
+
+
+@media (max-width: 768px) {
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  padding: 20px;
+  }
+
+  
+  .dos {
+
+    display: flex;
+    flex-direction: column;
+    width:70%; /* o el mismo 20% que usas en .filters-column */
+    padding: 0 0px;
+
+  }
+
+  .encabezado {
+    width: 100%;
+    align-self: center; 
+    padding: 10px;
+  }
+
+  
+  .encabezado label{
+    font-size: 1rem;
+
+  }
+
+  .filters-column {
+    align-self: center;
+  }
+
+  .properties-column {
+   margin-top: 50px;
+  }
+
+
+   /* Seccion casas*/
+
+   .container {
+
+    padding: 0px;
+  }
+
+
+   .property-card {
+    width: 100%;
+  }
+
+  .encabezado {
+    position: static;
+  }
+
+  .filter input, .filter select {
+    
+    width: 80%;
+
+  }
+
+  .property-detailss {
+    min-height: 100px;
+    height: auto;
+  }
+
+  .iconoi{
+    padding: 5px;
+  }
+
+  
+  
+  
+
+
+  .property-detailsss {
+    height: 40px;
+    margin-top: 5px;
+    align-items: center; 
+    justify-content: center; 
+  }
+
+  .property-detailsss p{
+
+    display: none;
+    
+  }
+
+  .botones-mas{
+    
+    margin-left: 0px;
+    gap:30px;
+
+  }
+
+  .botones-mas i{
+    
+    font-size: 22px; 
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+
+
+
+  .property-details h3 {
+    font-size: 14px;
+  }
+
+  .property-details p {
+    font-size: 0.7rem;
+  }
+
+  .property-detailss h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+
+
+  .properties-column {
+    width: 100%;
+  }
+
+  .property-grid {
+    grid-template-columns: 1fr;  /* Una sola columna en pantallas pequeñas */
+    padding: 10px 20px;
+    padding-bottom: 40px;
+  }
+
+  .property-details p {
+    font-size: 1rem;
+    color: #333;
+  }
+
+
+
+}
   

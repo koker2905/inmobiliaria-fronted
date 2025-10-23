@@ -1,23 +1,47 @@
 
 
-    <header class="custom-toolbar" >
+    <header class="custom-toolbar" > 
     
-      <img src='assets/imagenes/logoFenix5.png' alt="Logo 1" class="logo"> 
+      <img src='assets/imagenes/logoFenix5.png' alt="Logo 1" class="logo" (click)="goToInicio()"> 
     
         <div class="botones">
     
           <button class="btninicio" (click)="goToInicio()">Inicio</button>
-          <button class="btnacercade" (click)="goToInicio()">Propiedades</button>
-          <button class="btnacercade" (click)="goToAcercaDe()">Acerca de</button>
-          <button class="google-button" (click)="loginWithGoogle()">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="google-logo">
-          </button>
+
+          <div class="dropdown" >
+            <button class="btnacercade dropdown-toggle" *ngIf="!isLoggedIn" (click)="toggleDropdown()">Propiedades</button>
+            <div class="dropdown-menu" *ngIf="dropdownAbierto">
+              <button (click)="filtrarPorTipo('')">Todas</button>
+              <button (click)="filtrarPorTipo('casa')">Casas</button>
+              <button (click)="filtrarPorTipo('casa rentera')">Casa Rentera</button>
+              <button (click)="filtrarPorTipo('departamento')">Departamentos</button>
+              <button (click)="filtrarPorTipo('departamentos para inversiones')">Departamentos Inversiones</button>
+              <button (click)="filtrarPorTipo('penthouse')">Penthouse</button>
+              <button (click)="filtrarPorTipo('casas en condominio')">Casas en condominio</button>
+              <button (click)="filtrarPorTipo('terreno')">Terrenos</button>
+              <button (click)="filtrarPorTipo('suit')">Suites</button>
+              <button (click)="filtrarPorTipo('haciendas')">Haciendas</button>
+              <button (click)="filtrarPorTipo('quintas vacacionales')">Quintas vacacionales</button>
+              <button (click)="filtrarPorTipo('local comercial')">Locales comerciales</button>
+              <button (click)="filtrarPorTipo('oficina')">Oficinas</button>
+              <button (click)="filtrarPorTipo('nave')">Naves Industriales</button>
+            </div>
+          </div>
+          
+          <button class="btnacercade" *ngIf="!isLoggedIn" (click)="goToAcercaDe()">Acerca de</button>
+          <button class="btnacercade" *ngIf="isLoggedIn" (click)="goToMantenimiento()">Matenimiento</button>
+
+          <button class="btnacercade" *ngIf="isLoggedIn" (click)="goToSeguimiento()">Seguimiento</button>
+
+          <button class="btninicio" *ngIf="!isLoggedIn" (click)="openLoginModal()">Iniciar sesión</button>  
+          <button class="btninicio" *ngIf="isLoggedIn" (click)="cerrarSesion()">Cerrar sesión</button>
+
+          <app-login-modal *ngIf="showLoginModal" (close)="closeLoginModal()"></app-login-modal>
+       
           
         </div>
       </header>
 
 
-    
 
-
-<router-outlet> </router-outlet>
+<router-outlet></router-outlet>

@@ -1,0 +1,148 @@
+.property-card {
+    background-color: #FFBE2D;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 20px 30px;
+    margin: 40px auto;
+    width: 60%;
+    font-family: 'Roboto', sans-serif;
+    color: #1a1a1a;
+  }
+  
+  .property-card h2 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 20px;
+  }
+  
+  .property-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 40px;
+  }
+  
+  .property-form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .property-form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  
+  .property-form-group input,
+  .property-form-group textarea {
+    padding: 10px;
+    border: 1px solid #d0a000;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    background-color: #fff8dc;
+  }
+  
+  
+  .property-form-group input,
+  .property-form-group textarea {
+    padding: 10px;
+    border: 1px solid #d0a000;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    background-color: #fff8dc;
+  }
+  
+  .property-form-group textarea {
+    resize: vertical;
+    min-height: 60px;
+  }
+  
+  .property-card h3,
+  .property-card h4 {
+    margin-top: 25px;
+    color: #333;
+  }
+  
+  .property-card img {
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  .property-card button {
+    margin-top: 10px;
+    padding: 10px 14px;
+    border: none;
+    background-color: #222;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .property-card button:hover {
+    background-color: #444;
+  }
+  
+  .property-card input[type="file"] {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .property-card .imagenes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .property-card .imagenes-grid div {
+    position: relative;
+  }
+  
+  .property-card .imagenes-grid img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .property-card .imagenes-grid button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: crimson;
+    font-size: 0.8rem;
+    padding: 4px 6px;
+    border-radius: 3px;
+  }
+  
+  .property-card .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+
+  @media (max-width: 768px) {
+
+
+    .property-card {
+
+
+      margin: 0px auto;
+   
+    }
+
+
+    .property-form-grid {
+
+      grid-template-columns: repeat(1, 1fr);
+
+    }
+
+    .action-buttons {
+      width: 60px;
+      height: auto;
+      gap: 50px;
+    }
+
+  }

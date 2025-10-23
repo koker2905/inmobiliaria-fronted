@@ -14,17 +14,18 @@
     </div>
 
     <div class="imagen">
-      <button class="btnconimagen">
+      <button class="btnconimagen" (click)="estado = 'En Renta'; searchProperties()">
         <img src="assets/imagenes/arriendooo.jpeg" alt="icono" class="icono">
         <span class="texto">Arriendos</span>
       </button>
     
-      <button class="btnconimagen">
+      <button class="btnconimagen" (click)="estado = 'En Venta'; searchProperties()">
+
         <img src="assets/imagenes/venta.jpg" alt="icono" class="icono">
         <span class="texto">Ventas</span>
       </button>
     
-      <button class="btnconimagen">
+      <button class="btnconimagen" (click)="searchProperties()">
         <img src="assets/imagenes/otro.png" alt="icono" class="icono">
         <span class="texto">Otros</span>
       </button>
@@ -44,40 +45,66 @@
   
       <!-- Botones para seleccionar el tipo de propiedad -->
       <div class="button-group">
-        <button class="button" (click)="filterProperties('venta')">En venta</button>
-        <button class="button" (click)="filterProperties('arrendar')">Arrendar</button>
+        <button 
+        class="button"
+        [ngClass]="{ 'button-selected': estado === 'En Venta' }"
+        (click)="estado = 'En Venta'">
+        En venta
+      </button>
+      
+      <button 
+      class="button"
+      [ngClass]="{ 'button-selected': estado === 'En Renta' }"
+      (click)="estado = 'En Renta'">
+      Arrendar
+    </button>
+    
       </div>
+
   
       <!-- Filtros de búsqueda -->
-      <div class="search-filters">
-        <select [(ngModel)]="propertyType">
-          <option value="casa">Tipo de propiedad</option>
-          <option value="apartamento">Apartamento</option>
-          <option value="casa">Casa</option>
-          <option value="suite">Suite</option>
-        </select>
-        
-        <select [(ngModel)]="location">
-          
-          <option value="cuenca">Cuenca</option>
-          <option value="azogues">Azogues</option>
-          <option value="canar">Cañar</option>
-        </select>
-  
-        <select [(ngModel)]="sector">
-          <option value="sector1">Sector</option>
-          <option value="sector2">Sector 2</option>
-          <option value="sector3">Sector 3</option>
-        </select>
-      </div>
+      
+    <div class="search-filters">
+      <!-- Tipo de propiedad -->
+      <div class="primerF">
+        <p>Tipo De Propiedad</p>
+        <ng-select
+        [(ngModel)]="propertyType"
+        [items]="propertyTypes"
+        [clearable]="false"
+        class="ng-sector-select">
+      </ng-select>
+      
+</div>
+
+
+<!-- Ciudad -->
+<div class="segundoF">
+  <p>Ciudad</p>
+<ng-select
+  [(ngModel)]="city"
+  [items]="cities"
+  [clearable]="false"
+  (change)="onCityChange(city)"
+  class="ng-sector-select">
+</ng-select>
+</div>
+
+
+</div>
   
       <!-- Botón de búsqueda -->
+      
       <div class="button-group">
         <button class="search-button" (click)="searchProperties()">BUSCAR</button>
       </div>
   
+      <div class="codigo">
       <!-- Opción de búsqueda por código -->
-      <button class="code-search-button">BUSCAR POR CÓDIGO</button>
+      <button class="code-search-button" (click)="searchPorCodigo()" >BUSCAR POR CÓDIGO</button>
+      <input type="text" [(ngModel)]="codigo" />
+      </div>
+ 
     </div>
     </div>
   </div>
@@ -88,25 +115,11 @@
 
 
 
-
-  <a href="#seccion-2" class="scroll-down" *ngIf="!showScrollUp" (click)="scrollToSection('seccion-2')">
-    <img src="assets/imagenes/flecha-abajo.png" alt="Flecha abajo" class="flecha">
-  </a>
-  
-    <!-- Flecha para desplazarse hacia arriba (oculta inicialmente) -->
-  <a href="#top" class="scroll-up" *ngIf="showScrollUp" (click)="scrollToTop()">
-    <img src="assets/imagenes/flecha-arriba.png" alt="Flecha arriba" class="flecha">
-  </a>
-
-
-  <section class="video">
-
-    <video autoplay loop muted >
-      <source src="assets/imagenes/Comp 1_2_1.mp4" type="video/mp4">
-      Tu navegador no soporta la etiqueta de video.
-    </video>    
-
-  </section>
+<section class="videos">
+  <video #videoPlayer class="video" autoplay loop playsinline muted>
+    <source src="assets/imagenes/Comp 1_2_1.mp4" type="video/mp4">
+  </video>
+</section>
 
 
 
@@ -122,22 +135,26 @@
 
   <div class="property-grid" id="seccion-2">
     <!-- Mostrar las 9 propiedades aleatorias -->
-    <div class="property-card" *ngFor="let property of randomProperties">
-      <img [src]="property.url_img" alt="Propiedad" class="property-img">
+    <div class="property-card" *ngFor="let property of (busquedaActiva ? filteredProperties : randomProperties)">
+
+
+      <img 
+      [src]="property.imagenes?.[0]" 
+      alt="Imagen principal" 
+      class="imagenProp"
+    />
+    
       <div class="property-details">
         <h3>{{ property.TipoPropiedad }} - {{ property.Estado }}</h3>
-      </div>
+  </div>
       
-  
-
       <div class="property-detailss">
 
-        <h2>${{ property.Precio_Venta }}</h2>
-        <p class="dos">{{ property.Direccion_Sector }}</p>
-
-
+        <h2>${{ property.Precio_Venta }}</h2> 
+        <p>{{property.Direccion_Sector }}</p>
+          <p>Cod: {{ property.IPD }}</p>
+    
         <div class="iconoi">
-
         <div clas="interno">
         <i class="fas fa-bed" ></i>
         <p class="tres">{{ property.HAB }}</p>
@@ -163,20 +180,17 @@
       <p> Mas informacion:</p>
 
       <div class="botones-mas">
-      <button>
-      <i class="fas fa-plus"></i>
-      </button>
-
+        <a [routerLink]="['/detalle', property.IPD]">
+          <i class="fas fa-plus"></i>
+        </a>
+   
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fenix.ec.inmobiliaria@gmail.com" target="_blank">
-      <button >
-        <i class="fas fa-envelope"></i></button>
+        <i class="fas fa-envelope"></i>
       </a>
 
         <!-- Botón de WhatsApp -->
       <a [href]="createWhatsappLink(property)" target="_blank">
-        <button >
           <i class="fab fa-whatsapp"></i>
-        </button>
       </a>
 
       </div>
